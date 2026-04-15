@@ -5,7 +5,7 @@ from copy import deepcopy
 import torch
 from torch.utils.data import DataLoader
 
-from Integration.addDataet.Params import Params
+from Integration.DRCNet.Params import Params
 
 if __name__ == "__main__":
     param = Params()

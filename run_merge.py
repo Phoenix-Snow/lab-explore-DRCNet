@@ -1,4 +1,4 @@
-import Integration.DRCNet.Merge as Merge
+import Integration.privateDataset.Merge as Merge
 
 if __name__ == '__main__':
     back = Merge.MergeByYaml().work()

@@ -58,7 +58,7 @@ train:
     pretrained_model_path_time_Module:
     pretrained_model_path_total_Model:
 
-    model_save_path: model/XingJiangTS/Competition
+    model_save_path: model/XingJiangTS/CompetitionST_MRNet
 
   is_shutdown_after_finish: False
 
@@ -74,10 +74,10 @@ test:
   run:
     predict_target: now  # now / future
     batch_size: 300
-    pretrained_model_path: model/XingJiangTS/Competition/timesnet_modified_add_spatial_now/Underfitting_0.8341145753860474/params.pth
+    pretrained_model_path: model/XingJiangTS/CompetitionST_MRNet/timesnet_modified_add_spatial_now/Underfitting_0.8341145753860474/params.pth
     is_test_train: False
 
-    results_save_path: results/XingJiangTS/Competition
+    results_save_path: results/XingJiangTS/CompetitionST_MRNet
   terrain_labels: {
     51828: 0,  # desert_oasis
     51777: 0,

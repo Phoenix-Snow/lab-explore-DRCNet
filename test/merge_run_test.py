@@ -4,7 +4,7 @@
 # @time    : 2025/1/14 下午4:10
 # @function: can merge data by this file or use run.py while training
 # @version : V1.0.0
-import Integration.DRCNet.Merge as Merge
+import Integration.privateDataset.Merge as Merge
 
 if __name__ == '__main__':
     print('+++++++++++++Test merge process')

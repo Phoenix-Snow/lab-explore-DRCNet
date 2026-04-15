@@ -157,10 +157,10 @@ def extract_coordinates(file_path, lat_col='LATITUDE', lon_col='LONGITUDE', ):
         df_head = pd.read_excel(file_path, nrows=1)
     else:
         raise Exception(
-            '[❌ ERROR: Integration/addDataet/Merge.py/func-extract_coordinates] file_path need to end with .csv, .xlsx or .xls')
+            '[❌ ERROR: Integration/DRCNet/Merge.py/func-extract_coordinates] file_path need to end with .csv, .xlsx or .xls')
     if lat_col not in df_head.columns or lon_col not in df_head.columns:
         raise Exception(
-            '[❌ ERROR: Integration/addDataet/Merge.py/func-extract_coordinates] lat_col or lon_col is error. (actual column name in origin tabel)')
+            '[❌ ERROR: Integration/DRCNet/Merge.py/func-extract_coordinates] lat_col or lon_col is error. (actual column name in origin tabel)')
     return df_head[lon_col].iloc[0], df_head[lat_col].iloc[0]
 
 
@@ -171,7 +171,7 @@ def extract_coordinates_plus(file_path, lat_col='LATITUDE', lon_col='LONGITUDE',
         df_head = pd.read_excel(file_path, nrows=1)
     else:
         raise Exception(
-            '[❌ ERROR: Integration/addDataet/Merge.py/func-extract_coordinates] file_path need to end with .csv, .xlsx or .xls')
+            '[❌ ERROR: Integration/DRCNet/Merge.py/func-extract_coordinates] file_path need to end with .csv, .xlsx or .xls')
     if lat_col not in df_head.columns:
         raise Exception(f'[❌ ERROR] lat_col "{lat_col}" not found in columns: {df_head.columns.tolist()}')
     if lon_col not in df_head.columns:

@@ -6,7 +6,7 @@ from Integration.Competition.Merge import MergeByYaml
 class Params:
     def __init__(self):
         self.__resource = {}
-        with open('Integration/Competition/config.yaml', 'r', encoding='utf-8') as file:
+        with open('Integration/CompetitionST_MRNet/config.yaml', 'r', encoding='utf-8') as file:
             self.__config = yaml.safe_load(file)
             file.close()
         if self.__config is None:

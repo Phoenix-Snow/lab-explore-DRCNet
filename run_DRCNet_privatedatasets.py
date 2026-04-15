@@ -4,7 +4,7 @@ import time
 import torch
 from torch.utils.data import DataLoader
 
-from Integration.DRCNet.Params import Params
+from Integration.privateDataset.Params import Params
 from Tools.Normalizer_1D import Normalizer
 
 if __name__ == "__main__":

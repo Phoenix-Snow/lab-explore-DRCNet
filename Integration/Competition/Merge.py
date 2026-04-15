@@ -42,7 +42,7 @@ class MergeByYaml:
         self.__config = {}
 
     def load_config(self, state, count=0):
-        with open('Integration/Competition/merge.yaml', 'r', encoding='utf-8') as file:
+        with open('Integration/CompetitionST_MRNet/merge.yaml', 'r', encoding='utf-8') as file:
             self.__config = yaml.safe_load(file)
             file.close()
         # 数据源

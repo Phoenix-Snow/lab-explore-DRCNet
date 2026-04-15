@@ -55,8 +55,6 @@ class Procedure(nn.Module):
         else:
             raise Exception('[❌ ERROR] Train model first')
 
-        model = copy.deepcopy(self.__net)
-        print_net_params_list(model)
         try:
             model = copy.deepcopy(self.__net)
             print_net_params_list(model)
