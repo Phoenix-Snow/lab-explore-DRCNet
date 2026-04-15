@@ -1,0 +1,211 @@
+task: test # merge, train, test, predict
+device: gpu # gpu, cpu
+# model_path: # config the model path, if the model is pretrained, or you need to predict
+
+# three ways to process data for training:
+# configurations are all in merge.yaml
+# 1. run merge_data.py
+# 2. set task as "merge" and run run.py
+# 3. set is_merged to False and then dataset will be merged during training
+
+background:
+  # 空间区域尺寸
+  #  spatial_target_size: 100  # has been dropout - use DEM instead now
+  # 时间序列长度（seq_len = op_len）
+  time_series_length: 365  # This is the time series length of both input and current/future predictions.
+  # Our model is designed to make pure future predictions, with the time series length being the same as the input.
+  # We don't bother considering whether the future time series predictions would be better if they were shorter than the input time series length!
+  #
+  stat:
+    51828: [ 79.9333, 37.1333, 1375 ]
+    51777: [ 88.1667, 39.0333, 1385.6 ]
+    51709: [ 75.9833, 39.4667, 1385.6 ]
+    51628: [ 80.2333, 41.1667, 1161.8 ]
+    51567: [ 86.5667, 42.0833, 1055.3 ]
+    52203: [ 93.5167, 42.8167, 737.2 ]
+    51573: [ 89.2, 42.9333, 34.5 ]
+    52112: [ 95.1333, 43.7667, 479 ]
+    51463: [ 87.65, 43.7833, 1930 ]
+    51431: [ 81.15, 43.8333, 1225.2 ]
+    51358: [ 85.8167, 44.2833, 1288 ]
+    51133: [ 83.0, 46.7333, 534.9 ]
+    51076: [ 88.0833, 47.7333, 1679.4 ]
+  # dem文件
+  dem_path: 新疆维吾尔自治区_DEM_30m分辨率_NASA数据.tif
+
+train:
+  merge: # config in merge.yaml first
+    is_merged: True # True if the data is already merged, False otherwise
+    dataset_number: 00 # dataset number if merged
+  preprocess:
+    #    is_normalize: False # whether to normalize the data
+    normalize_type: MinMaxNormalize # MinMaxNormalize, StdMeanNormalize
+  run:
+    # T_ave,T_max,T_min,AtmospherePressure_avg,WindSpeed_avg,RelativeHumidity,theory_sunDuration,SunDuration,theory_DailySunRadiation,DailySunRadiation
+    #    input_features: [ T_ave,T_max,T_min,AtmospherePressure_avg,WindSpeed_avg,RelativeHumidity,theory_sunDuration,SunDuration,theory_DailySunRadiation ]
+    #    output_features: [ DailySunRadiation ]
+    #    output_series_length: 1
+    
+    predict_target: future  # now / future
+
+    epoches: 210
+    batch_size: 300
+    learning_rate: 0.0002
+
+    #    step: 2  # 模型分两部分, 用于做消融实验(只能从去除空间模块上做消融)
+    is_output_antiNormal: False
+
+    pretrained_model_path_time_Module:
+    pretrained_model_path_total_Model:
+
+    model_save_path: model/XingJiangTS/Competition
+
+  is_shutdown_after_finish: False
+
+test:
+  merge: # config in merge.yaml first
+    is_merged: True # True if the data is already merged, False otherwise
+    dataset_number: 01 # predict test dataset if you already merge your dataset
+    train_dataset_number: 00 # predict train dataset (you have merged your dataset during training)
+
+  preprocess:
+    # is_normalize: False # whether to normalize the data
+    normalize_type: MinMaxNormalize # MinMaxNormalize, StdMeanNormalize
+  run:
+    predict_target: now  # now / future
+    batch_size: 300
+    pretrained_model_path: model/XingJiangTS/Competition/timesnet_modified_add_spatial_now/Underfitting_0.8341145753860474/params.pth
+    is_test_train: False
+
+    results_save_path: results/XingJiangTS/Competition
+  terrain_labels: {
+    51828: 0,  # desert_oasis
+    51777: 0,
+    51709: 0,
+    51628: 1,  # north_slope_foothill
+    51567: 1,
+    52203: 1,
+    51573: 1,
+    52112: 1,
+    51463: 2,  # mountain_meadow
+    51431: 1,
+    51358: 1,
+    51133: 2,
+    51076: 2,
+  }
+  label_names: {
+    0: "Desert Oasis",
+    1: "North Slope Foothill",
+    2: "Mountain Meadow/Forest",
+  }
+  is_shutdown_after_finish: False
+
+
+predict:
+  normalize_type: MinMaxNormalize
+  model_params_path:
+  is_sample_simple: False
+  simple_sample:
+    resource_path:
+    output_save_path:
+  multi_sample:
+    resource_path:
+    batch_size: 300
+
+
+
+
+
+
+
+#  model_params:
+#    input_map:
+#      Resource: [ station_path_dict, station_map_dict ]
+#      output: [ temporal_map, spatial_map ]
+#    # Temporal
+#    times_block:
+#      # module
+#      From: Module.TimesBlock
+#      Import: TimesNet
+#      # params
+#      FFT_circulation_times: 3
+#      hidden_convLayer_size: 128
+#      kernels_num: 3
+#      # input_map output
+#      input_map: [ temporal_map ]
+#      output: [ temporal_map ]
+#    cbs1:
+#      From: Module.ConvBlock
+#      Import: CBS
+#      # params
+#      in_dim: 3
+#      out_dim: 1
+#      kernel_size: 3
+#      circulate_times: 1
+#      # input_map output
+#      input_map: [ spatial_map ]
+#      output: [ spatial_map ]
+#    cbs2:
+#      From: Module.ConvBlock
+#      Import: CBS
+#      # params
+#      in_dim: 1
+#      out_dim: 1
+#      kernel_size: 3
+#      stride: 2
+#      circulate_times: 5
+#      # input_map output
+#      input_map: [ spatial_map ]
+#      output: [ spatial_map ]
+#    batch_norm:
+#      From: torch.nn
+#      Import: BatchNorm2d
+#      # params
+#      channels: 1
+#      # input_map output
+#      input_map: [ spatial_map ]
+#      output: [ spatial_map ]
+#    squeeze:
+#      dim: 1
+#    fusion:
+#      From: Multimodal_fusion.Matrix_Fusion
+#      Import: MatrixFusion
+#      # params
+#      return_state: PXYB-X1PY2-B
+#      # input_map output
+#      input_map: [ temporal_map, spatial_map ]
+#      output: [ fusion_map ]
+#    cbs3:
+#      From: Module.ConvBlock
+#      Import: CBS
+#      # params
+#      in_dim: 1
+#      out_dim: 1
+#      kernel_size: 3
+#      circulate_times: 3
+#      # input_map output
+#      input_map: [ fusion_map ]
+#      output: [ cbs_map ]
+
+
+#    Informer:
+#      pred_len: 1,
+#      label_len: 1,
+#      enc_in: 7,
+#      dec_in: 7,
+#      d_model: 512,
+#      embed: fixed,
+#      freq: h,
+#      dropout: 0.05,
+#      e_layers: 2,
+#      d_layers: 1,
+#      d_ff: 2048,
+#      n_heads: 8,
+#      factor: 5,
+#      output_attention: False,
+#      distil: True,
+#      c_out: 7,
+#      seq_len: 96,
+#      num_class: 7
+
+

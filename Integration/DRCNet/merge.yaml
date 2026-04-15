@@ -1,0 +1,39 @@
+temporal_series_path: resource/XinJiangTS/目标域数据集.xlsx  # resource/XinJiangTS/源域数据集.xlsx   resource/XinJiangTS/目标域数据集.xlsx
+#spatial_map_path: resource/XinJiangTS/新疆卫星图.png # 新疆地形图.png  # 初期猜想：卫星图更合适
+dem_file_path: resource/XinJiangTS/新疆维吾尔自治区_DEM_30m分辨率_NASA数据.tif
+# 按站点分别进行的保存
+temporal_dataset_save_base: temporal_resource/
+spatial_dataset_save_base: spatial_resource/
+all_station_data_save_path: time_series.csv
+# 空间区域尺寸（默认）
+spatial_target_size: 100
+# 时间序列长度（默认）
+time_series_length: 365
+# 训练集占比
+train_ratio: 0.8
+# 是否进行缺失值插补
+is_imputation: True
+
+# 站点空间三维坐标
+stat:
+  51828: [ 79.9333, 37.1333, 1375 ]
+  51777: [ 88.1667, 39.0333, 1385.6 ]
+  51709: [ 75.9833, 39.4667, 1385.6 ]
+  51628: [ 80.2333, 41.1667, 1161.8 ]
+  51567: [ 86.5667, 42.0833, 1055.3 ]
+  52203: [ 93.5167, 42.8167, 737.2 ]
+  51573: [ 89.2, 42.9333, 34.5 ]
+  52112: [ 95.1333, 43.7667, 479 ]
+  51463: [ 87.65, 43.7833, 1930 ]
+  51431: [ 81.15, 43.8333, 1225.2 ]
+  51358: [ 85.8167, 44.2833, 1288 ]
+  51133: [ 83.0, 46.7333, 534.9 ]
+  51076: [ 88.0833, 47.7333, 1679.4 ]
+  51353: [ 86.10, 45.02, 343.4 ]
+
+# 地图性质, 经度-宽度, 纬度-高度
+#longitude_range: [ 73.501142, 96.384783 ]
+#map_width: 1042
+#latitude_range: [ 34.336146, 49.183097 ]
+#map_height: 676
+

@@ -1,0 +1,44 @@
+# input
+temporal_series_path: resource/china/all_china_stations.csv
+dem_path: resource/
+# output
+dataset_name: jing_DEWP
+# hu 沪  # su_zhe 江苏-苏su；浙江-浙zhe; dian 云南省; yu 重庆市; qian 贵州省; gui 广西壮族自治区; jing 北京; jin 天津; ji 河北
+
+# 选取站点，根据选中的GeoJson
+stat:
+  type: province
+  domain: [ "北京市" ]
+  # [ "河北省", "天津市" ] [ "北京市" ] [ "云南省" ] [ "重庆市", "贵州省", "广西壮族自治区" ] [ "上海市" ] [ "江苏省", "浙江省" ]
+# 经纬度海拔，如果数据集中没有需要额外写入的，{站点ID: {'LATITUDE': 纬度, 'LONGITUDE': 经度, 'ELEVATION': 海拔}}
+station_3d: { }
+# 选取参数
+columns:
+  station_id: 'STATION'
+  date_column: 'DATE'
+
+#  temporal_column: [ 'TEMP', 'MAX', 'MIN', 'DEWP', 'STP', 'VISIB', 'WDSP', 'MXSPD', 'GUST' ]
+  temporal_column: [ 'TEMP', 'MAX', 'MIN', 'STP', 'VISIB', 'WDSP', 'MXSPD', 'GUST' ]
+  spatial_column: [ 'LATITUDE', 'LONGITUDE', 'ELEVATION' ]  # 'LATITUDE', 'LONGITUDE', 'ELEVATION' 按这个顺序填列名，尤其是经纬度不能反，不然无法识别到正确坐标
+  #  calc_column: ["SLP_Residual", "PET_Est", "DaylightDuration", "DailyRadiation", "Fog_Risk",
+  #                # 气压残差、估算蒸散发、日照时长、日辐射量、雾风险指数
+  #                "Geo_Zoning_Season", "Geo_Zoning_Continentality", "Geo_Zoning_Lat_Abs", "Geo_Zoning_Lat_2",
+  #                # 季节相位、大陆度、纬度绝对值、纬度平方
+  #                "Geo_Zoning_Atmos_Thickness", "Geo_Zoning_Atmos_Log_Elevation",
+  #                # 大气厚度因子、对数海拔特征
+  #                "Geo_Spatial_X", "Geo_Spatial_Y", "Geo_Spatial_Z", "Terrain_Slope", "Terrain_Aspect"]
+  #                # 地心三维空间坐标X、Y、Z、地形坡度、地形坡向
+#  output_column: [ 'PRCP' ]
+  output_column: [ 'DEWP' ]
+# 时间序列长度（默认365）
+time_series_length: 365
+# 训练集占比（因为是空间外推，所以测试集是独立的站点）
+train_ratio: 0.8
+target_domain_ratio: 0.1
+# 是否进行缺失值插补
+is_imputation: True
+NAN_placeholder: {
+  'TEMP': 9999.9, 'MAX': 9999.9, 'MIN': 9999.9, 'DEWP': 9999.9, 'SLP': 9999.9, 'STP': 9999.9,
+  'VISIB': 999.9, 'WDSP': 999.9, 'MXSPD': 999.9, 'GUST': 999.9, 'PRCP': 99.99, 'SNDP': 999.9
+}
+

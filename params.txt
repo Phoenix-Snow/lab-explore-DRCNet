@@ -1,0 +1,50 @@
+net_param                                                                        requires_grad   shape              mem(bytes)
+------------------------------------------------------------------------------------------------------------------------------------------
+_TS_Model__temporal_block.temporal_net._T__Inception_pro.conv_layers.0.weight    True            [7, 7, 1, 1]       196.00
+_TS_Model__temporal_block.temporal_net._T__Inception_pro.conv_layers.0.bias      True            [7]                 28.00
+_TS_Model__temporal_block.temporal_net._T__Inception_pro.conv_layers.1.weight    True            [7, 7, 3, 3]       1764.00
+_TS_Model__temporal_block.temporal_net._T__Inception_pro.conv_layers.1.bias      True            [7]                 28.00
+_TS_Model__temporal_block.temporal_net._T__Inception_pro.conv_layers.2.weight    True            [7, 7, 5, 5]       4900.00
+_TS_Model__temporal_block.temporal_net._T__Inception_pro.conv_layers.2.bias      True            [7]                 28.00
+_TS_Model__temporal_block.temporal_net._T__Inception_last.conv_layers.0.weight   True            [21, 21, 1, 1]     1764.00
+_TS_Model__temporal_block.temporal_net._T__Inception_last.conv_layers.0.bias     True            [21]                84.00
+_TS_Model__temporal_block.temporal_net._T__Inception_last.conv_layers.1.weight   True            [21, 21, 3, 3]     15876.00
+_TS_Model__temporal_block.temporal_net._T__Inception_last.conv_layers.1.bias     True            [21]                84.00
+_TS_Model__temporal_block.temporal_net._T__Inception_last.conv_layers.2.weight   True            [21, 21, 5, 5]     44100.00
+_TS_Model__temporal_block.temporal_net._T__Inception_last.conv_layers.2.bias     True            [21]                84.00
+_TS_Model__temporal_block.temporal_linear_layers.0.weight                        True            [1350, 63]         340200.00
+_TS_Model__temporal_block.temporal_linear_layers.0.bias                          True            [1350]             5400.00
+_TS_Model__temporal_block.temporal_linear_layers.1.weight                        True            [1350]             5400.00
+_TS_Model__temporal_block.temporal_linear_layers.1.bias                          True            [1350]             5400.00
+_TS_Model__temporal_block.temporal_linear_layers.2.weight                        True            [1]                  4.00
+_TS_Model__temporal_block.temporal_linear_layers.4.weight                        True            [80, 1350]         432000.00
+_TS_Model__temporal_block.temporal_linear_layers.4.bias                          True            [80]               320.00
+_TS_Model__temporal_block.temporal_linear_layers.5.weight                        True            [80]               320.00
+_TS_Model__temporal_block.temporal_linear_layers.5.bias                          True            [80]               320.00
+_TS_Model__temporal_block.temporal_linear_layers.6.weight                        True            [1]                  4.00
+_TS_Model__temporal_block.temporal_linear_layers.8.weight                        True            [1, 80]            320.00
+_TS_Model__temporal_block.temporal_linear_layers.8.bias                          True            [1]                  4.00
+_TS_Model__spatial_memory.weight                                                 True            [1000, 7]          28000.00
+_TS_Model__spatial_linear_layer.0.weight                                         True            [200, 14]          11200.00
+_TS_Model__spatial_linear_layer.0.bias                                           True            [200]              800.00
+_TS_Model__spatial_linear_layer.1.weight                                         True            [200]              800.00
+_TS_Model__spatial_linear_layer.1.bias                                           True            [200]              800.00
+_TS_Model__spatial_linear_layer.2.weight                                         True            [1]                  4.00
+_TS_Model__spatial_linear_layer.3.weight                                         True            [50, 200]          40000.00
+_TS_Model__spatial_linear_layer.3.bias                                           True            [50]               200.00
+_TS_Model__spatial_linear_layer.4.weight                                         True            [50]               200.00
+_TS_Model__spatial_linear_layer.4.bias                                           True            [50]               200.00
+_TS_Model__spatial_linear_layer.5.weight                                         True            [1]                  4.00
+_TS_Model__spatial_linear_layer.6.weight                                         True            [2, 50]            400.00
+_TS_Model__spatial_linear_layer.6.bias                                           True            [2]                  8.00
+------------------------------------------------------------------------------------------------------------------------------------------
+total param mem ≈ 0.90 MB  (fp32)
+[INFO] Register count_convNd() for <class 'torch.nn.modules.conv.Conv2d'>.
+[INFO] Register count_linear() for <class 'torch.nn.modules.linear.Linear'>.
+[INFO] Register count_normalization() for <class 'torch.nn.modules.batchnorm.BatchNorm1d'>.
+[INFO] Register count_prelu() for <class 'torch.nn.modules.activation.PReLU'>.
+[INFO] Register zero_ops() for <class 'torch.nn.modules.dropout.Dropout'>.
+[INFO] Register zero_ops() for <class 'torch.nn.modules.container.Sequential'>.
+C:\Users\Administrator\anaconda3\envs\ts\lib\site-packages\thop\vision\calc_func.py:64: UserWarning: This API is being deprecated
+  warnings.warn("This API is being deprecated")
+total FLOPs: 104.369M; params: 228.311K;
