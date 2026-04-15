@@ -1,0 +1,53 @@
+TS_Model_ENHANCE(
+  (_TS_Model_ENHANCE__temporal_block): T_Model_new(
+    (temporal_net): T(
+      (_T__Inception_pro): Inception_Conv_Cat_Layer(
+        (conv_layers): ModuleList(
+          (0): Conv2d(8, 8, kernel_size=(1, 1), stride=(1, 1))
+          (1): Conv2d(8, 8, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (2): Conv2d(8, 8, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+        )
+      )
+      (_T__Inception_last): Inception_Conv_Cat_Layer(
+        (conv_layers): ModuleList(
+          (0): Conv2d(24, 24, kernel_size=(1, 1), stride=(1, 1))
+          (1): Conv2d(24, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+          (2): Conv2d(24, 24, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+        )
+      )
+    )
+    (temporal_linear_layers): Sequential(
+      (0): Linear(in_features=72, out_features=1350, bias=True)
+      (1): LayerNorm((1350,), eps=1e-05, elementwise_affine=True, bias=True)
+      (2): PReLU(num_parameters=1)
+      (3): Dropout(p=0.2, inplace=False)
+      (4): Linear(in_features=1350, out_features=80, bias=True)
+      (5): LayerNorm((80,), eps=1e-05, elementwise_affine=True, bias=True)
+      (6): PReLU(num_parameters=1)
+      (7): Dropout(p=0.2, inplace=False)
+      (8): Linear(in_features=80, out_features=1, bias=True)
+      (9): Sigmoid()
+    )
+  )
+  (_TS_Model_ENHANCE__residual_memory): Embedding(1000, 8)
+  (_TS_Model_ENHANCE__residual_linear_layer): Sequential(
+    (0): Linear(in_features=8, out_features=200, bias=True)
+    (1): LayerNorm((200,), eps=1e-05, elementwise_affine=True, bias=True)
+    (2): PReLU(num_parameters=1)
+    (3): Linear(in_features=200, out_features=50, bias=True)
+    (4): LayerNorm((50,), eps=1e-05, elementwise_affine=True, bias=True)
+    (5): PReLU(num_parameters=1)
+    (6): Linear(in_features=50, out_features=2, bias=True)
+    (7): Sigmoid()
+  )
+  (_TS_Model_ENHANCE__direction_linear_layer): Sequential(
+    (0): Linear(in_features=9, out_features=200, bias=True)
+    (1): LayerNorm((200,), eps=1e-05, elementwise_affine=True, bias=True)
+    (2): PReLU(num_parameters=1)
+    (3): Linear(in_features=200, out_features=16, bias=True)
+    (4): LayerNorm((16,), eps=1e-05, elementwise_affine=True, bias=True)
+    (5): PReLU(num_parameters=1)
+    (6): Linear(in_features=16, out_features=2, bias=True)
+    (7): Sigmoid()
+  )
+)
