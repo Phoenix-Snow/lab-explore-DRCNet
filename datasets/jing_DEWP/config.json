@@ -1,0 +1,13 @@
+{
+  "temporal_dataset_save_base": "datasets\\jing_DEWP\\temporal_resource",
+  "temporal_normalization_params_path": "datasets\\jing_DEWP\\temporal_normalization_params.json",
+  "domain_split_path": "datasets\\jing_DEWP\\domain_split.json",
+  "domain_type": "province",
+  "domain": ["北京市"],
+  "station_list": [54511099999],
+  "station_3d": {
+    "54511099999": [40.080111, 116.584556, 35.35, "北京市"]
+  },
+  "time_series_length": 365,
+  "target_domain_ids": [54511099999]
+}

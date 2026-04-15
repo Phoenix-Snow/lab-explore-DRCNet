@@ -1,0 +1,35 @@
+{
+    "test": {
+        "Information": "This is test the forcast of TEST dataset. ",
+        "mse": 79.83710845311482,
+        "mae": 7.273569591840109,
+        "mse_normal": 0.013500570226460696,
+        "mae_normal": 0.09458477807541689,
+        "r2": 0.19067702790101368,
+        "mse_one_sample": 26.03604507446289,
+        "mae_one_sample": 3.9860358238220215,
+        "mse_normal_one_sample": 0.004402732476592064,
+        "mae_normal_one_sample": 0.051834020763635635,
+        "P50": -5.248270034790039,
+        "P90": 4.912506866455075,
+        "P50_normal": -0.0682479739189148,
+        "P90_normal": 0.06388176083564756,
+        "pretrained_model_path": "checkpoint/DRCNet/supplement_yu_qian_gui_DEWP/T1350_80_enhanceTS200_50_150_16_1000/Underfitting_4.865287509040/params.pth"
+    },
+    "train": {
+        "Information": "This is test the forcast of TRAIN dataset. ",
+        "mse": 44.504851886204314,
+        "mae": 4.877915917124067,
+        "mse_normal": 0.007525835279375314,
+        "mae_normal": 0.06343193921659673,
+        "r2": 0.7445463146482195,
+        "mse_one_sample": 57.241695404052734,
+        "mae_one_sample": 5.341216087341309,
+        "mse_normal_one_sample": 0.009679654613137245,
+        "mae_normal_one_sample": 0.06945665180683136,
+        "P50": 0.12090301513671875,
+        "P90": 9.10269546508789,
+        "P50_normal": 0.001572251319885254,
+        "P90_normal": 0.11837056577205657
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "temporal_dataset_save_base": "datasets\\hu_DEWP\\temporal_resource",
+  "temporal_normalization_params_path": "datasets\\hu_DEWP\\temporal_normalization_params.json",
+  "domain_split_path": "datasets\\hu_DEWP\\domain_split.json",
+  "domain_type": "province",
+  "domain": ["上海市"],
+  "station_list": [58321199999, 58362099999, 58367099999],
+  "station_3d": {
+    "58321199999": [31.143378, 121.805214, 3.96, "上海市"],
+    "58362099999": [31.4, 121.4666666, 4.0, "上海市"],
+    "58367099999": [31.197875, 121.336319, 3.04, "上海市"]
+  },
+  "time_series_length": 365,
+  "target_domain_ids": [58362099999]
+}
