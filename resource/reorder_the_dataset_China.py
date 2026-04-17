@@ -442,7 +442,11 @@ class OrderedStreamMerger:
 
     def _heartbeat_loop(self):
         """后台线程：不断发送心跳"""
+<<<<<<< Updated upstream
         while not self.stop_event.is_set():  # 需要一个 stop_event 来控制这个线程
+=======
+        while not self.stop_event.is_set():  # 需要一个 __stop_event 来控制这个线程
+>>>>>>> Stashed changes
             self.guardian.record_heartbeat()
             time.sleep(2)  # 每2秒发送一次心跳信号
 

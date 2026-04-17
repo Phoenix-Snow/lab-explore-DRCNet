@@ -4,7 +4,7 @@ from typing import Union
 
 from ModelRegister.Frequency_Encoder import T_Model
 from ModelRegister.DRCNet import TS_Model
-from Integration.ClassCenter import TrainVal_Output
+from Tools.ClassCenter import TrainVal_Output
 from Tools.Normalizer_1D import StdMeanAntiNormalize, MinMaxAntiNormalize, NoAnti
 
 

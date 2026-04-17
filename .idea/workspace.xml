@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e1d5e988-92f2-4247-8c6b-a2f880b3bd25" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exp/Competition/Predict/ST_MRNet_PRED.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp/Competition/Predict/ST_MRNet_PRED.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exp/Competition/Train/ST_MRNet_RUN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp/Competition/Train/ST_MRNet_RUN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exp/DRCNet/Predict/DRCNet_PRED.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp/DRCNet/Predict/DRCNet_PRED.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exp/DRCNet/Train/DRCNet_RUN.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp/DRCNet/Train/DRCNet_RUN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integration/ClassCenter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integration/Competition/Merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/Integration/Competition/Merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integration/EarlyStop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Integration/addDataet/Merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/Integration/addDataet/Merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tools/ClassCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/ClassCenter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre-update.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pre-update.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Phoenix-Snow&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Phoenix-Snow/lab-explore-DRCNet.git&quot;,
+    &quot;accountId&quot;: &quot;51c869a7-3e01-4473-92a8-5bc2a5bd0303&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3CNkdz3TeVkqeaKighD61K1iuFF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.run_DRCNet.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "code-only",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/AIProgram/GitHub_submit/lab-explore-DRCNet/Integration/Competition",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Integration\Competition" />
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Integration" />
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Tools" />
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Tools" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="run_DRCNet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="lab-explore-DRCNet" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_DRCNet.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.run_DRCNet" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3bd3a6803838-JavaScript-PY-261.22158.340" />
+        <option value="bundled-python-sdk-b63d5a1f7c97-b61e75351b1f-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-261.22158.340" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="e1d5e988-92f2-4247-8c6b-a2f880b3bd25" name="更改" comment="" />
+      <created>1776233509258</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776233509258</updated>
+      <workItem from="1776233510271" duration="8319000" />
+      <workItem from="1776252194388" duration="140000" />
+      <workItem from="1776386619058" duration="1506000" />
+      <workItem from="1776414486687" duration="302000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/lab_explore_DRCNet$run_DRCNet.coverage" NAME="run_DRCNet 覆盖结果" MODIFIED="1776252276594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

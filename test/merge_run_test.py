@@ -4,7 +4,11 @@
 # @time    : 2025/1/14 下午4:10
 # @function: can merge data by this file or use run.py while training
 # @version : V1.0.0
+<<<<<<< Updated upstream
 import Integration.privateDataset.Merge as Merge
+=======
+import Integration.Private_Dataset_Solar.Merge as Merge
+>>>>>>> Stashed changes
 
 if __name__ == '__main__':
     print('+++++++++++++Test merge process')

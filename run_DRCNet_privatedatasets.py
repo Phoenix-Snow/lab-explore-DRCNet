@@ -4,7 +4,11 @@ import time
 import torch
 from torch.utils.data import DataLoader
 
+<<<<<<< Updated upstream
 from Integration.privateDataset.Params import Params
+=======
+from Integration.Private_Dataset_Solar.Params import Params
+>>>>>>> Stashed changes
 from Tools.Normalizer_1D import Normalizer
 
 if __name__ == "__main__":

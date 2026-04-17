@@ -54,7 +54,11 @@ def calculate_percentiles_from_csv(csv_file_path, has_header=True):
 # 使用示例
 if __name__ == "__main__":
     # CSV文件路径
+<<<<<<< Updated upstream
     csv_file = "results/XingJiangTS/privateDataset/timesnet_modified_add_spatial_future365/20251109003536/test_train_RESULTS.csv"  # 请替换为你的CSV文件路径
+=======
+    csv_file = "results/XingJiangTS/Private_Dataset_Solar/timesnet_modified_add_spatial_future365/20251109003536/test_train_RESULTS.csv"  # 请替换为你的CSV文件路径
+>>>>>>> Stashed changes
 
     try:
         # 计算百分位数

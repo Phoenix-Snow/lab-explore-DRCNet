@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 task: test
 device: gpu
 
@@ -59,3 +60,66 @@ predict:
   multi_sample:
     resource_path:
     batch_size: 300
+=======
+task: train
+device: gpu
+
+feature_split:
+  date_column: 'DATE'
+  first_level: [ 'TEMP', 'MAX', 'MIN', 'STP', 'VISIB', 'WDSP', 'MXSPD', 'GUST' ] # 时序层（时序：常规预测；残差：第一次增强特征）
+  second_level: [ 'Geo_Zoning_Lat_2', 'LONGITUDE', 'Geo_Zoning_Atmos_Log_Elevation', 'Terrain_Slope', 'Terrain_Aspect' ] # 方位层（空间：第二次增强特征）
+  third_level: [ 'PET_Est', 'DailyRadiation', 'Geo_Zoning_Season', 'Geo_Zoning_Continentality' ]  # 物理层（时空：第二次增强特征）
+  output_columns: [ 'DEWP' ]
+
+#Memory_Management_Strategy: save  # fast / save (fast: class cache all data, more fast in whole training if memory is enough; save: class only cache path, more memory-friendly)
+
+train:
+  merge: # config in merge.yaml first
+    is_merged: True # True if the data is already merged, False otherwise
+    dataset_name: jing_DEWP # dataset number if merged
+  preprocess:
+    #    is_normalize: False # whether to normalize the data
+    normalize_type: MinMaxNormalize # MinMaxNormalize, StdMeanNormalize
+  run:
+    predict_target: outside # inside: split for test inside / outside: use other dataset for test
+
+    epoches: 210
+    batch_size: 300
+    learning_rate: 0.00002
+
+    pretrained_model_path_time_Module:
+    pretrained_model_path_total_Model:
+
+    model_save_path: /  # 无目录则根目录为checkpoint
+
+  is_shutdown_after_finish: False
+
+test:
+  merge: # config in merge.yaml first
+    is_merged: True # True if the data is already merged, False otherwise (TEST dataset)
+    dataset_name: hu_DEWP # predict test dataset if you already merge your dataset
+
+    train_dataset_name: su_zhe_DEWP # predict train dataset (you have merged your dataset during training)
+
+  preprocess:
+    normalize_type: MinMaxNormalize # MinMaxNormalize, StdMeanNormalize
+  run:
+    batch_size: 600
+    pretrained_model_path: checkpoint/DRCNet/supplement_su_zhe_DEWP/T1350_80_enhanceTS200_50_200_16_1000/Underfitting_6.538482540326/params.pth
+    is_test_train: True
+
+    results_save_path: results/
+
+  is_shutdown_after_finish: False
+
+predict:
+  normalize_type: MinMaxNormalize
+  model_params_path:
+  is_sample_simple: False
+  simple_sample:
+    resource_path:
+    output_save_path:
+  multi_sample:
+    resource_path:
+    batch_size: 300
+>>>>>>> Stashed changes

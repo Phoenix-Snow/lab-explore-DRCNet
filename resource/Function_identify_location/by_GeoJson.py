@@ -2,9 +2,15 @@ from shapely.geometry import Point, Polygon
 import json
 import os
 
+<<<<<<< Updated upstream
 GeoJson_China_path = "identify_location_Function/china.geojson"
 GeoJson_province_path = "identify_location_Function/china_province.geojson"
 GeoJson_city_path = "identify_location_Function/china_city.geojson"
+=======
+GeoJson_China_path = "identify_location_Function/china.__geojson"
+GeoJson_province_path = "identify_location_Function/china_province.__geojson"
+GeoJson_city_path = "identify_location_Function/china_city.__geojson"
+>>>>>>> Stashed changes
 
 
 
