@@ -1,4 +1,4 @@
-task: test
+task: train
 device: gpu
 
 feature_split:
@@ -18,7 +18,7 @@ train:
     #    is_normalize: False # whether to normalize the data
     normalize_type: MinMaxNormalize # MinMaxNormalize, StdMeanNormalize
   run:
-    predict_target: outside # inside: split for test inside / outside: use other dataset for test
+    where_test: outside # inside: split for test inside / outside: use other dataset for test
 
     epoches: 210
     batch_size: 300

@@ -1,3 +1,5 @@
+import os.path
+
 import yaml
 
 from Integration.DRCNet.Merge import MergeByYaml
@@ -52,26 +54,30 @@ class Params:
         elif self.__task == 'test':
             self.__config = self.__config['test']
             print('LOAD TEST')
-            if not self.__config['merge']['is_merged']:
-                a, b, d, e, f, g = MergeByYaml().load_config('work', self.__config['merge']['dataset_name'])
-                self.__config['merge']['is_merged'] = True
-                self.__config['dataset_name'] = a
-                self.__resource['station_path_dict'] = b
-                self.__resource['station_id_list'] = {}
-                self.__resource['station_id_list']['test'] = list(b.keys())
-                self.__background = g
+            self.__resource['station_path_dict'] = {}
+            self.__resource['station_id_list'] = {}
+            if self.is_test_inside:
+                self.__config['dataset_name'] = 'inside'
+                self.__resource['station_path_dict']['test'] = None
+                self.__resource['station_id_list']['test'] = None
             else:
-                a, b, d, e, f, g = MergeByYaml().load_config('not_work', self.__config['merge']['dataset_name'])
-                self.__config['dataset_name'] = a
-                self.__resource['station_path_dict'] = {}
-                self.__resource['station_path_dict']['test'] = b
-                self.__resource['station_id_list'] = {}
-                self.__resource['station_id_list']['test'] = list(b.keys())
-                self.__background = g
+                if not self.__config['merge']['is_merged']:
+                    a, b, d, e, f, g = MergeByYaml().load_config('work', self.__config['merge']['dataset_name'])
+                    self.__config['merge']['is_merged'] = True
+                    self.__config['dataset_name'] = a
+                    self.__resource['station_path_dict']['test'] = b
+                    self.__resource['station_id_list']['test'] = list(b.keys())
+                else:
+                    a, b, d, e, f, g = MergeByYaml().load_config('not_work', self.__config['merge']['dataset_name'])
+                    self.__config['dataset_name'] = a
+                    self.__resource['station_path_dict']['test'] = b
+                    self.__resource['station_id_list']['test'] = list(b.keys())
             print('LOAD TRAIN')
             self.__config['merge']['is_merged'] = True
-            a, b, d, e, f, g = MergeByYaml().load_config('not_work', self.__config['merge']['train_dataset_name'])  # 这一次给的是train的编号
+            a, b, d, e, f, g = MergeByYaml().load_config('not_work',
+                                                         self.__config['merge']['train_dataset_name'])  # 这一次给的是train的编号
             self.__config['train_dataset_name'] = a
+            # self.__config['dataset_name'] = os.path.join(a, self.__config['dataset_name'])
             self.__resource['station_path_dict']['train'] = b  # 合并
             # 按照训练、测试字典罗列station_id_list
             self.__resource['station_id_list']['train'] = b.keys()
@@ -97,6 +103,16 @@ class Params:
     @property
     def NAME(self):
         return self.__config['dataset_name']
+
+    @property
+    def PATH_JOIN(self):
+        if self.TASK == 'train':
+            return self.__config['dataset_name']
+        elif self.TASK == 'test':
+            return os.path.join(self.__config['train_dataset_name'], self.__config['dataset_name'])
+        else:
+            return None
+
 
     @property
     def TASK(self):
@@ -129,15 +145,15 @@ class Params:
     @property
     def loc_column_date(self):
         return self.__split_columns['date_column']
-    
+
     @property
     def in_columns_1st(self):
         return self.__split_columns['first_level']
-    
+
     @property
     def in_columns_2nd(self):
         return self.__split_columns['second_level']
-    
+
     @property
     def in_columns_3rd(self):
         return self.__split_columns['third_level']
@@ -145,3 +161,18 @@ class Params:
     @property
     def out_column(self):
         return self.__split_columns['output_columns']
+
+    @property
+    def is_test_inside(self):
+        if self.TASK == 'train':
+            if 'inside' in str(self.__config['run']['where_test']).lower():
+                return True
+            else:
+                return False
+        elif self.TASK == 'test':
+            if 'inside' in str(self.__config['run']['pretrained_model_path']).lower():
+                return True
+            else:
+                return False
+        else:
+            return False

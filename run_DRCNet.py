@@ -24,10 +24,14 @@ if __name__ == "__main__":
         # normalizer = Normalizer(param.RESOURCE['normal_params'], param.CONFIG['preprocess']['normalize_type'])
         # normalizer_input, normalizer_label, antiNormalizer = normalizer.normalization_input, normalizer.normalization_label, normalizer.antiNormalization
         # Register: Reader params & antiNormalization
+        if param.is_test_inside:
+            station_ids = list(set(param.RESOURCE['station_path_dict'].keys()) - set(param.BACKGROUND['target_domain_ids']))
+        else:
+            station_ids = list(param.RESOURCE['station_path_dict'].keys())
         register_class_train = Register(deepcopy(param.RESOURCE['station_path_dict']), param.RESOURCE['train_list'],
                                         # param.TIME_SERIES_LENGTH, normalizer_input, normalizer_label,
                                         # [param.loc_column_date] + param.in_columns_1st + param.in_columns_2nd + param.in_columns_3rd,
-                                        param.TIME_SERIES_LENGTH,
+                                        param.TIME_SERIES_LENGTH, station_ids,
                                         deepcopy(param.RESOURCE['normal_params']),
                                         param.CONFIG['preprocess']['normalize_type'],
                                         param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
@@ -35,7 +39,7 @@ if __name__ == "__main__":
         register_class_val = Register(deepcopy(param.RESOURCE['station_path_dict']), param.RESOURCE['valid_list'],
                                       # param.TIME_SERIES_LENGTH, normalizer_input, normalizer_label,
                                       # [param.loc_column_date] + param.in_columns_1st + param.in_columns_2nd + param.in_columns_3rd,
-                                      param.TIME_SERIES_LENGTH,
+                                      param.TIME_SERIES_LENGTH, station_ids,
                                       deepcopy(param.RESOURCE['normal_params']),
                                       param.CONFIG['preprocess']['normalize_type'],
                                       param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
@@ -58,7 +62,7 @@ if __name__ == "__main__":
         # Model EXP (Register: Model, Loss Function, Optimizer, Trainer/Evaluator/Predictor Function)
         exp = Procedure(param.TIME_SERIES_LENGTH, param.CONFIG['run']['learning_rate'], 'cuda:0',
                         antiNormalizer, Train_Reader, Valid_Reader, param.CONFIG['run']['model_save_path'],
-                        'supplement_' + param.NAME,
+                        param.PATH_JOIN + '_inside' if param.is_test_inside else param.PATH_JOIN,
                         register_class_train.t_features_index, register_class_train.s_features_index,
                         register_class_train.label_features_index)
         exp.load_model(param.CONFIG['run']['pretrained_model_path_time_Module'],
@@ -126,22 +130,37 @@ if __name__ == "__main__":
         shutdown_after_finish = param.CONFIG['is_shutdown_after_finish']
 
         # Register: Reader params & antiNormalization
-        register_class_train = Register(param.RESOURCE['station_path_dict']['train'], None,
-                                        # param.TIME_SERIES_LENGTH, normalizer_input, normalizer_label,
-                                        # [param.loc_column_date] + param.in_columns_1st + param.in_columns_2nd + param.in_columns_3rd,
-                                        param.TIME_SERIES_LENGTH,
-                                        deepcopy(param.RESOURCE['normal_params']),
-                                        param.CONFIG['preprocess']['normalize_type'],
-                                        param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
-                                        param.out_column)
-        register_class_test = Register(param.RESOURCE['station_path_dict']['test'], None,
-                                       # param.TIME_SERIES_LENGTH, normalizer_input, normalizer_label,
-                                       # [param.loc_column_date] + param.in_columns_1st + param.in_columns_2nd + param.in_columns_3rd,
-                                       param.TIME_SERIES_LENGTH,
-                                       deepcopy(param.RESOURCE['normal_params']),
-                                       param.CONFIG['preprocess']['normalize_type'],
-                                       param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
-                                       param.out_column)
+        if param.is_test_inside:
+            train_station_ids = list(set(param.RESOURCE['station_path_dict']['train'].keys()) - set(param.BACKGROUND['target_domain_ids']))
+            test_station_ids = list(param.BACKGROUND['target_domain_ids'])
+            register_class_train = Register(param.RESOURCE['station_path_dict']['train'], None,
+                                            param.TIME_SERIES_LENGTH, train_station_ids,
+                                            deepcopy(param.RESOURCE['normal_params']),
+                                            param.CONFIG['preprocess']['normalize_type'],
+                                            param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
+                                            param.out_column)
+            register_class_test = Register(param.RESOURCE['station_path_dict']['train'], None,
+                                           param.TIME_SERIES_LENGTH, test_station_ids,
+                                           deepcopy(param.RESOURCE['normal_params']),
+                                           param.CONFIG['preprocess']['normalize_type'],
+                                           param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
+                                           param.out_column)
+        else:
+            train_station_ids = list(param.RESOURCE['station_path_dict']['train'].keys())
+            test_station_ids = list(param.RESOURCE['station_path_dict']['test'].keys())
+            register_class_train = Register(param.RESOURCE['station_path_dict']['train'], None,
+                                            param.TIME_SERIES_LENGTH, train_station_ids,
+                                            deepcopy(param.RESOURCE['normal_params']),
+                                            param.CONFIG['preprocess']['normalize_type'],
+                                            param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
+                                            param.out_column)
+            register_class_test = Register(param.RESOURCE['station_path_dict']['test'], None,
+                                           param.TIME_SERIES_LENGTH, test_station_ids,
+                                           deepcopy(param.RESOURCE['normal_params']),
+                                           param.CONFIG['preprocess']['normalize_type'],
+                                           param.in_columns_1st, param.in_columns_2nd + param.in_columns_3rd,
+                                           param.out_column)
+
         antiNormalizer = register_class_train.antiNormalizer
 
         # dataset: test
@@ -153,7 +172,7 @@ if __name__ == "__main__":
         # Model EXP
         exp = Procedure(param.TIME_SERIES_LENGTH, param.CONFIG['run']['pretrained_model_path'], 'cuda:0',
                         antiNormalizer, Train_Reader, Test_Reader, param.CONFIG['run']['results_save_path'],
-                        'supplement_' + param.NAME,
+                        param.PATH_JOIN,
                         register_class_train.t_features_index, register_class_train.s_features_index,
                         register_class_train.label_features_index,
                         register_class_train.input_features_name, register_class_train.label_features_name,

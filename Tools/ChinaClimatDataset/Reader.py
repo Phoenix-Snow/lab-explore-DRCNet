@@ -9,8 +9,8 @@ from Tools.Normalizer_1D import Normalizer
 
 class Register:
     def __init__(self, station_path_dict: Dict[str, str], index_dict: Dict[str, List[int]] | None,
-                 time_seq_length: int, normal_params, normalize_type, t_features_name, s_features_name,
-                 label_features_name):
+                 time_seq_length: int, training_station_ids: list,
+                 normal_params, normalize_type, t_features_name, s_features_name, label_features_name):
         self.time_seq_length = time_seq_length
 
         # 1. station_path_dict 地址库 / 完整{id-DataFrame}
@@ -19,7 +19,8 @@ class Register:
         self.label_features_index = []
         self.t_features_index, self.s_features_index = [], []
         station_path_dict = station_path_dict
-        for station_id, path in station_path_dict.items():
+        for station_id in training_station_ids:
+            path = station_path_dict[str(station_id)]
             if path.endswith(".npz"):
                 npz_file = np.load(path, mmap_mode='r')
             else:

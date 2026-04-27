@@ -21,7 +21,7 @@ from Tools.draw import draw_tsne_by_ss, draw_residuals, draw_true1pred_img
 class Procedure(nn.Module):
     def __init__(self, series_len: int, pretrained_model_path: str, device: str,
                  antiNormalize_function: Union[MinMaxAntiNormalize, StdMeanAntiNormalize],
-                 train_reader, test_reader, results_save_path: str, task_desc: str,
+                 train_reader, test_reader, results_save_path: str, path_join: str,
                  t_features, s_features, o_features, in_features_name, out_features_name,
                  additional_Info=None, is_test_train: bool = False):
         super().__init__()
@@ -45,16 +45,18 @@ class Procedure(nn.Module):
         if 'base' in pretrained_model_path:  # 去空间优化模块的消融 (纯时序模型)
             self.__net = TS_Model(self.__t_net, len(s_features), None, device, nn.LayerNorm)
             self.__net.eval()
-            self.__results_save_path = os.path.join(self.__results_save_path, self.__net.NAME, task_desc,
+            self.__results_save_path = os.path.join(self.__results_save_path, self.__net.NAME, path_join,
                                                     f"{self.__t_net.PARAMS}_{self.__net.PARAMS()}")
         elif 'enhance' in pretrained_model_path:
             self.__net = TS_Model_ENHANCE(self.__t_net, len(s_features), None, device, nn.LayerNorm)
             self.__net.eval()
-            self.__results_save_path = os.path.join(self.__results_save_path, self.__net.NAME, task_desc,
+            self.__results_save_path = os.path.join(self.__results_save_path, self.__net.NAME, path_join,
                                                     f"{self.__t_net.PARAMS}_{self.__net.PARAMS()}")
         else:
             raise Exception('[❌ ERROR] Train model first')
 
+        model = copy.deepcopy(self.__net)
+        print_net_params_list(model)
         try:
             model = copy.deepcopy(self.__net)
             print_net_params_list(model)

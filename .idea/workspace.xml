@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1d5e988-92f2-4247-8c6b-a2f880b3bd25" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/Integration/DRCNet/Merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/Integration/DRCNet/Merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exp/DRCNet/Train/DRCNet_TEST.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exp/DRCNet/Train/DRCNet_TEST.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integration/DRCNet/Params.py" beforeDir="false" afterPath="$PROJECT_DIR$/Integration/DRCNet/Params.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Integration/DRCNet/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Integration/DRCNet/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Integration/DRCNet/merge.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Integration/DRCNet/merge.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_merge.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_merge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tools/ChinaClimatDataset/Reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tools/ChinaClimatDataset/Reader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_DRCNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_DRCNet.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "train",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/AIProgram/GitHub_submit/lab-explore-DRCNet/Integration/Competition",
+    "last_opened_file_path": "D:/AIProgram/GitHub_submit/lab-explore-DRCNet/Tools/ChinaClimatDataset",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,10 +73,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Integration\Competition" />
-      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Integration" />
-      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Tools" />
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Tools\ChinaClimatDataset" />
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Exp\DRCNet\Train" />
       <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet" />
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Integration\DRCNet" />
+      <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Integration\Competition" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\AIProgram\GitHub_submit\lab-explore-DRCNet\Tools" />
@@ -92,7 +94,7 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="false" />
@@ -132,6 +134,9 @@
       <workItem from="1776252194388" duration="140000" />
       <workItem from="1776386619058" duration="1506000" />
       <workItem from="1776414486687" duration="302000" />
+      <workItem from="1776753760851" duration="181000" />
+      <workItem from="1776765591880" duration="58000" />
+      <workItem from="1777271503123" duration="437000" />
     </task>
     <servers />
   </component>
@@ -139,6 +144,6 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/lab_explore_DRCNet$run_DRCNet.coverage" NAME="run_DRCNet 覆盖结果" MODIFIED="1776418757738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/lab_explore_DRCNet$run_DRCNet.coverage" NAME="run_DRCNet 覆盖结果" MODIFIED="1777271907762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
